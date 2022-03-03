@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <title>This is tips.html body</title>
+ 
+<body>
+
+<h2>Sindhuja Vilipala computes tips</h2>
+
+    <form>
+        <input type="radio" id="rg1_red" name="color" value="red"   
+          checked >
+        <label for="rg1_red">Red</label></br>
+      
+        <input type="radio" id="rg1_blue" name="color" 
+           value="blue">
+        <label for="rg1_blue">Blue</label></br>
+      
+        <input type="radio" id="rg1_green" name="color"   
+           value="green">
+        <label for="rg1_green">Green</label></br>
+
+        <input type="button" onclick="resolveRadio()" value="Get values from radio group">
+      </form>
+      
+      <form>
+        <input type="checkbox" id="cb1_cheese" name="topping1"   
+          value="cheese" checked>
+        <label for="cb1_cheese">I want cheese</label></br>
+      
+        <input type="checkbox" id="cb1_olive" name="topping2" 
+           value="olive">
+        <label for="cb1_olive">I want olives</label></br>
+      
+        <input type="checkbox" id="cb1_onion" name="topping3"   
+           value="onion" checked>
+        <label for="cb1_onion">I want onions</label></br>
+
+        <input type="button" onclick="resolveCheck()" value="Get values from check boxes">
+      </form>
+      
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+function resolveCheck() {
+    console.log("Getting input")
+    cheese = document.getElementById("cb1_cheese").checked
+    olives = document.getElementById("cb1_olive").checked
+    onions = document.getElementById("cb1_onion").checked
+    confirmed = confirm("Are these the values? "+cheese+" and "+olives+" and "+onions)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+
+function resolveRadio() {
+    console.log("Getting input")
+    redOpt = document.getElementById("rg1_red").checked
+    blueOpt = document.getElementById("rg1_blue").checked
+    greenOpt = document.getElementById("rg1_green").checked
+    confirmed = confirm("Are these the values? "+redOpt+" and "+blueOpt+" and "+greenOpt)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+
+</script>
+<form>
+    <label for="amount">Enter a check amount</label>
+    <input type="number" id="amount" name="amount" value=20> <br>
+
+    <label for="tip_increase">Enter tip increase</label>
+    <input type="number" id="tip_increase" name="tip_increase" value=0.05> <br>
+
+    <input type="button" onclick="tips()" value="Find tips">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script>
+    function tips() {
+        let result = "";
+        console.log("Getting form values");
+        amount = document.getElementById("amount").value;
+        tip_increase = document.getElementById("tip_increase").value;
+        var percentage = 0.1;
+        for (n = 0; n < 10; n++) {
+            result = result + (amount * percentage).toFixed(1) + " ";
+            percentage = percentage + parseFloat(tip_increase);
+        }
+        document.getElementById("result").innerHTML = "Tip amounts by increase of "
+            + tip_increase + " are " + result;
+    }
+</script>
+
+<form>
+    <label for="form_one"> Enter a check amount </label>
+    <input type ="number" id="form_one" name="form_one" value=20> <br>
+
+    <label for="form_two"> Enter tip increase </label>
+    <input type ="number" id="form_two" name="form_two" value=0.05> <br>
+
+    <input type="button" onclick="tips()" value="Find tips" >
+</form>
+
+<div id="result"></div>
+<br>
+
+    <input type="radio" id="times" name="arthematic" value="times" onclick="chooseOp()">
+    <label for="times">*</label></br>
+  
+    <input type="radio" id="divide" name="arthematic"  onclick="chooseOp()" 
+       value="divide">
+    <label for="divide">/</label></br>
+  
+    <input type="radio" id="exponent" name="arthematic"  onclick="chooseOp()"   
+       value="exponent">
+    <label for="exponent">**</label></br>
+  </form>
+  <br>
+  <p id="results">Choose any arithmetic</p>
+
+<script> 
+function chooseOp(){
+    var amount=(Number)(document.getElementById("form_one").value)
+    var tipIncrease=(Number)(document.getElementById("form_two").value)
+     exponent=document.getElementById("exponent").checked
+ 
+     times=document.getElementById("times").checked
+   
+     divide=document.getElementById("divide").checked
+     
+  if(exponent){
+    document.getElementById('results').innerHTML="<b>[Amount * TipIncrease] Value is: </b>"+amount*tipIncrease
+  }
+    else if(times){
+    document.getElementById('results').innerHTML="<b>[Amount * TipIncrease] Value is: </b>"+amount*tipIncrease
+    }
+    else if(divide){
+    document.getElementById('results').innerHTML="<b>[Amount / TipIncrease] value is: </b>"+amount/tipIncrease
+    }
+}
+</script>
+<script> 
+function tips(){
+    var amount=(Number)(document.getElementById("form_one").value)
+    var tipIncrease=(Number)(document.getElementById("form_two").value)
+    result="Tip amounts by increase of "+tipIncrease+" are: "
+ 
+    var sum=amount*0.1
+    result+=sum+0.0
+    for(let i=1;i<10;i++){
+     var T=sum +(amount*tipIncrease);
+     result += " "+Math.round(T * 10) / 10
+     sum=Math.round(T * 10) / 10
+}
+document.getElementById('result').innerHTML=result;
+}
+
+</script>
+
+
+</body>
+</html> 
